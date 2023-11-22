@@ -1,37 +1,90 @@
-import Link from "next/link";
+"use client";
+import { Button, rem, MantineProvider, createTheme } from "@mantine/core";
+import { Unna, Work_Sans } from "next/font/google";
+import { type PropsWithChildren } from "react";
+import QuizProvider from "~/providers/QuizProvider";
+import QuizApp from "~/screens/QuizApp";
+
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+});
+const unna = Unna({
+  variable: "--font-unna",
+  weight: "700",
+  subsets: ["latin"],
+});
+
+const theme = createTheme({
+  components: {
+    Button: Button.extend({
+      vars: (theme, props) => {
+        if (props.size === "3xl") {
+          return {
+            root: {
+              "--button-height": rem(125),
+              "--button-padding-x": rem(0),
+              "--button-fz": rem(24),
+              "--button-radius": rem(0),
+            },
+          };
+        }
+        if (props.size === "2xl") {
+          return {
+            root: {
+              "--button-height": rem(100),
+              "--button-padding-x": rem(0),
+              "--button-fz": rem(24),
+              "--button-radius": rem(0),
+            },
+          };
+        }
+
+        if (props.size === "custom-lg") {
+          return {
+            root: {
+              "--button-height": rem(70),
+              "--button-padding-x": rem(50),
+              "--button-fz": rem(24),
+              "--button-radius": rem(0),
+            },
+          };
+        }
+
+        if (props.size === "2xs") {
+          return {
+            root: {
+              "--button-height": rem(24),
+              "--button-padding-x": rem(10),
+              "--button-fz": rem(10),
+            },
+          };
+        }
+
+        return { root: {} };
+      },
+    }),
+  },
+});
+
+function App({ children }: PropsWithChildren) {
+  return (
+    <MantineProvider theme={theme}>
+      <main
+        className={`flex min-h-screen flex-col items-center justify-center bg-beauty-blue text-white ${workSans.variable} ${unna.variable} font-sans`}
+      >
+        {children}
+      </main>
+    </MantineProvider>
+  );
+}
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-      </div>
-    </main>
+    <App>
+      <QuizProvider>
+        <QuizApp />
+      </QuizProvider>
+    </App>
   );
 }

@@ -2,6 +2,7 @@ const config = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
+    'postcss-flexbugs-fixes': {},
     'postcss-preset-mantine': {},
     'postcss-simple-vars': {
       variables: {
@@ -12,6 +13,17 @@ const config = {
         'mantine-breakpoint-xl': '88em',
       },
     },
+      'postcss-preset-env': 
+      {
+        autoprefixer: {
+          flexbox: 'no-2009',
+        },
+        stage: 3,
+        features: {
+          'custom-properties': false,
+        },
+      },
+    
   },
 };
 

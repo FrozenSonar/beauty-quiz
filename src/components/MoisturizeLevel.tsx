@@ -13,7 +13,13 @@ export default function MoisturizeLevel({ level }: MoisturizeLevelProps) {
       <div className="mb-2 text-xl font-semibold tracking-wide">
         {HEADER_LIST[level]}
       </div>
-      <div className={isMobile ? "text-sm" : "text-base"}>
+      <div
+        className={
+          isMobile
+            ? "text-sm font-light tracking-wider"
+            : "text-base font-light tracking-wider"
+        }
+      >
         {SUBTEXT_LIST[level]}
       </div>
     </div>

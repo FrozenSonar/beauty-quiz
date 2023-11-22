@@ -1,5 +1,7 @@
 import { Slider } from "@mantine/core";
 
+import classes from "../styles/skinSlider.module.css";
+
 const marks = [
   { value: 0, label: "Normal Skin" },
   { value: 1, label: "Dry Skin" },
@@ -28,14 +30,21 @@ export default function SkinSlider({ value, setValue }: SkinSliderProps) {
         label={(val) => marks.find((mark) => mark.value === val)!.label}
         step={1}
         marks={marks}
+        // classNames={classes}
         styles={{
+          thumb: { backgroundColor: "#e2c47c", border: 0 },
+          track: { color: "#556479", borderRadius: 0 },
+          root: { borderRadius: 0 },
           markLabel: { display: "none" },
-          label: { backgroundColor: "#556479", borderRadius: 0 },
+          label: {
+            backgroundColor: "#556479",
+            borderRadius: 0,
+          },
         }}
       />
-      <div className="flex w-full flex-row justify-between ">
-        <div className="w-1/4 text-start">Normal Skin</div>
-        <div className="w-1/4 text-end">Crepey Skin</div>
+      <div className="flex w-full flex-row justify-between">
+        <div className="w-16 text-start font-light">Normal Skin</div>
+        <div className="w-16 text-end font-light">Crepey Skin</div>
       </div>
     </div>
   );

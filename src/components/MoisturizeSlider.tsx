@@ -40,8 +40,14 @@ export default function MoisturizeSlider({
         step={1}
         marks={marks}
         styles={{
+          thumb: { backgroundColor: "#e2c47c", border: 0 },
+          track: { color: "#556479", borderRadius: 0 },
+          root: { borderRadius: 0 },
           markLabel: { display: "none" },
-          label: { backgroundColor: "#556479", borderRadius: 0 },
+          label: {
+            backgroundColor: "#556479",
+            borderRadius: 0,
+          },
         }}
       />
       <div className="flex w-full flex-row justify-between ">

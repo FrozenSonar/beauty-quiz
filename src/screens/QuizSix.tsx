@@ -6,9 +6,11 @@ import Header from "~/components/Header";
 import { useState } from "react";
 import { Checkbox } from "@mantine/core";
 import ThanksForSharing from "~/components/ThanksForSharing";
+import useScreen from "~/hooks/isMobile";
 
 export default function QuizSix() {
   const [value, setValue] = useState<string[]>([]);
+  const { isMobile } = useScreen();
   const checkboxList: CheckboxCardProps[] = [
     {
       value: "0",
@@ -35,7 +37,7 @@ export default function QuizSix() {
   const disabled = !value.length;
 
   return (
-    <div className="">
+    <div className={!isMobile ? "w-[40rem]" : ""}>
       <Header />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         Have you experienced any of these issues in your previous skincare
@@ -50,7 +52,10 @@ export default function QuizSix() {
           />
         ))}
       </Checkbox.Group>
-      <ButtomBottons continueButtonProps={{ disabled }} />
+      <ButtomBottons
+        continueButtonProps={{ disabled }}
+        xButtonProps={{ text: "None of the Above" }}
+      />
       {!disabled && <ThanksForSharing />}
     </div>
   );

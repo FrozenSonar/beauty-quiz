@@ -5,7 +5,7 @@ export default function ThanksForSharing() {
       <div className="mb-4 text-xl font-semibold tracking-wide">
         Thanks for sharing!
       </div>
-      <div>
+      <div className="font-light tracking-wider">
         We've discovered that a lot of people have faced the same setbacks. City
         beauty has a clear one-step treatment that is easy to follow with
         long-term results. In less than two minutes, you will feel better than

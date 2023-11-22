@@ -20,7 +20,7 @@ export default function CustomProgressBar() {
         onClick={handleBack}
         size="compact-sm"
         variant="filled"
-        radius="xs"
+        radius={0}
         color="#556479"
       >
         {"<"}

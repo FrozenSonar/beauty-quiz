@@ -54,7 +54,10 @@ export default function QuizTwo() {
           />
         ))}
       </Checkbox.Group>
-      <ButtomBottons continueButtonProps={{ disabled }} />
+      <ButtomBottons
+        continueButtonProps={{ disabled }}
+        xButtonProps={{ text: "Unsure what my skin needs" }}
+      />
     </div>
   );
 }

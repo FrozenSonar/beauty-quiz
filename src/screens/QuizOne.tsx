@@ -34,7 +34,7 @@ export default function QuizOne() {
 
   const disabled = !value.length;
   return (
-    <div className="">
+    <div>
       <Header />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         Select problem areas

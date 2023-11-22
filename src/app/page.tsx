@@ -71,7 +71,7 @@ function App({ children }: PropsWithChildren) {
   return (
     <MantineProvider theme={theme}>
       <main
-        className={`flex min-h-screen flex-col items-center justify-center bg-beauty-blue text-white ${workSans.variable} ${unna.variable} font-sans`}
+        className={`flex min-h-screen flex-col items-center bg-beauty-blue pb-8 pt-4 text-white ${workSans.variable} ${unna.variable} font-sans`}
       >
         {children}
       </main>

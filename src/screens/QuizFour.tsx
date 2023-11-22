@@ -17,7 +17,9 @@ export default function QuizFour() {
           <div className="mb-4 text-2xl font-semibold tracking-wide">
             How often do you moisturize your skin?
           </div>
-          <div>Choose your current level to align with your routine:</div>
+          <div className="font-light tracking-wider">
+            Choose your current level to align with your routine:
+          </div>
           <MoisturizeSlider value={value} setValue={setValue} />
           <MoisturizeLevel level={value} />
           <ButtomBottons />

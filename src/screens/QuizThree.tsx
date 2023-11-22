@@ -49,18 +49,22 @@ export default function QuizThree() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-row space-x-8">
-          <div className="w-36">
+        <div className="flex flex-row space-x-12">
+          <div className="w-40">
             <Image
               src={SkinImageList[value] ?? ""}
               alt="skin"
               width={500}
-              height={500}
+              height={700}
             />
           </div>
           <div className="flex flex-col justify-center space-y-4">
-            <div>How would you describe your skin?</div>
-            <SkinSlider value={value} setValue={setValue} />
+            <div className="mb-8 text-xl font-semibold tracking-wider">
+              How would you describe your skin?
+            </div>
+            <div className="w-64">
+              <SkinSlider value={value} setValue={setValue} />
+            </div>
             <ButtomBottons />
           </div>
         </div>

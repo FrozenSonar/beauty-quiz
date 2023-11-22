@@ -22,7 +22,7 @@ export default function QuizFive() {
   ];
 
   return (
-    <div className="">
+    <div>
       <Header />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         How much time do you spend on body care daily:

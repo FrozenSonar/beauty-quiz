@@ -36,7 +36,9 @@ export default function OptionButton({
         justify="space-between"
         leftSection={
           <div
-            className={`pl-8 text-start ${isMobile ? "text-sm" : "text-lg"}`}
+            className={`pl-8 text-start ${
+              isMobile ? "text-[0.95rem]" : "text-lg"
+            }`}
           >
             {text}
           </div>

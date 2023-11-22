@@ -12,7 +12,7 @@ export default function Header({
 }: HeaderProps) {
   return (
     <div className={`mb-8 flex flex-col space-y-2 ${alignment} "`}>
-      <div>
+      <div className="mb-8 w-20">
         <Image
           src="/assets/city-beauty-logo.png"
           alt="City Beauty Logo"

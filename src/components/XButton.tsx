@@ -41,7 +41,7 @@ export default function XButton({
         fullWidth
         size="2xl"
         onClick={handleClick}
-        color={hovered ? "#394A62" : "#556479"}
+        bg={hovered ? "#394A62" : "#556479"}
         justify="space-between"
         leftSection={
           <div className="flex flex-row items-center space-x-4 pl-6">

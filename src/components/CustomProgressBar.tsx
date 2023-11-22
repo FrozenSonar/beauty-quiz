@@ -21,7 +21,7 @@ export default function CustomProgressBar() {
         size="compact-sm"
         variant="filled"
         radius={0}
-        color="#556479"
+        bg="#556479"
       >
         {"<"}
       </Button>

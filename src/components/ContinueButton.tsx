@@ -25,7 +25,7 @@ export default function ContinueButton({
       justify="space-between"
       className="disabled:bg-[#8d8465]"
       onClick={handleClick}
-      color="#e2c47c"
+      bg="#e2c47c"
       size="custom-lg"
       radius="xs"
       fullWidth

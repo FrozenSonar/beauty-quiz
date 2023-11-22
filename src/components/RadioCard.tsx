@@ -38,7 +38,7 @@ export default function RadioCard({
         {...buttonProps}
         variant="filled"
         onClick={() => setChecked?.()}
-        color={hovered ? "#394A62" : "#556479"}
+        bg={hovered ? "#394A62" : "#556479"}
         radius="xs"
         fullWidth
         size="2xl"

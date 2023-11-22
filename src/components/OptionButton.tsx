@@ -30,7 +30,7 @@ export default function OptionButton({
         {...props}
         variant="filled"
         onClick={handleClick}
-        color={hovered ? "#394A62" : "#556479"}
+        bg={hovered ? "#394A62" : "#556479"}
         size="3xl"
         fullWidth
         justify="space-between"

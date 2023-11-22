@@ -20,18 +20,6 @@ export default function CheckboxCard({
   const { hovered, ref } = useHover();
   const { isMobile } = useScreen();
 
-  const CheckboxIcon: CheckboxProps["icon"] = ({ indeterminate, ...others }) =>
-    indeterminate ? (
-      <></>
-    ) : (
-      <Image
-        src={`/assets/check-mark.png`}
-        alt="check"
-        objectFit="contain"
-        width={100}
-        height={100}
-      />
-    );
   return (
     <div
       className={`mb-2 overflow-hidden ${
@@ -44,7 +32,7 @@ export default function CheckboxCard({
         radius="xs"
         fullWidth
         size="2xl"
-        color={hovered ? "#394A62" : "#556479"}
+        bg={hovered ? "#394A62" : "#556479"}
         justify="space-between"
         leftSection={
           <div className="flex flex-row  space-x-4 pl-6">

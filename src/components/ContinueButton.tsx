@@ -8,6 +8,7 @@ export interface ContinueButtonProps extends ButtonProps {
 
 export default function ContinueButton({
   isGotIt,
+  disabled,
   ...props
 }: ContinueButtonProps) {
   const { quizList, currentQuiz, setCurrentQuiz } = useQuiz();
@@ -21,11 +22,11 @@ export default function ContinueButton({
   return (
     <Button
       {...props}
+      disabled={disabled}
       variant="filled"
       justify="space-between"
-      className="disabled:bg-[#8d8465]"
       onClick={handleClick}
-      bg="#e2c47c"
+      bg={disabled ? "#8d8465" : "#e2c47c"}
       size="custom-lg"
       radius="xs"
       fullWidth

@@ -51,7 +51,7 @@ export default function RadioCard({
               onChange={() => setChecked?.()}
               color="#e2c47c"
               tabIndex={-1}
-              size="md"
+              size="lg"
               aria-label="Checkbox example"
             />
             <div className="flex flex-col text-start">

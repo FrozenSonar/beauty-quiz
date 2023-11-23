@@ -29,7 +29,7 @@ export default function CustomProgressBar() {
         <Progress
           bg="#556479"
           size="lg"
-          radius="xs"
+          radius={0}
           color="#e2c47c"
           aria-label="Quiz Progress"
           value={value}

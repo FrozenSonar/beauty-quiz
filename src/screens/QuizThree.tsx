@@ -62,9 +62,9 @@ export default function QuizThree() {
             <div className="mb-8 text-xl font-semibold tracking-wider">
               How would you describe your skin?
             </div>
-            <div className="w-64">
-              <SkinSlider value={value} setValue={setValue} />
-            </div>
+
+            <SkinSlider value={value} setValue={setValue} />
+
             <ButtomBottons />
           </div>
         </div>

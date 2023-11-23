@@ -33,6 +33,7 @@ export default function QuizOne() {
   ];
 
   const disabled = !value.length;
+
   return (
     <div>
       <Header />
@@ -42,9 +43,9 @@ export default function QuizOne() {
       <Checkbox.Group value={value} onChange={setValue}>
         {checkboxList.map((option, i) => (
           <CheckboxCard
+            {...option}
             key={i}
             isSelected={value.includes(i.toString())}
-            {...option}
           />
         ))}
       </Checkbox.Group>

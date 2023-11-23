@@ -4,9 +4,11 @@ import CheckboxCard, {
 } from "~/components/CheckboxCard";
 import Header from "~/components/Header";
 import { useState } from "react";
+import useScreen from "~/hooks/isMobile";
 
 export default function QuizTwo() {
   const [value, setValue] = useState<string[]>([]);
+  const { isMobile } = useScreen();
   const checkboxList: CheckboxCardProps[] = [
     {
       value: "0",
@@ -50,7 +52,9 @@ export default function QuizTwo() {
 
   return (
     <div>
-      <Header />
+      <Header
+        alignment={isMobile ? "place-items-center" : "place-items-start"}
+      />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         What hydrating ingredients are you interested in?
       </div>

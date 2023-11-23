@@ -2,9 +2,11 @@ import { useState } from "react";
 import ButtomBottons from "~/components/ButtomBottons";
 import Header from "~/components/Header";
 import RadioCard, { type RadioCardProps } from "~/components/RadioCard";
+import useScreen from "~/hooks/isMobile";
 
 export default function QuizFive() {
   const [checked, setChecked] = useState<number>();
+  const { isMobile } = useScreen();
 
   const radioList: RadioCardProps[] = [
     {
@@ -23,7 +25,9 @@ export default function QuizFive() {
 
   return (
     <div>
-      <Header />
+      <Header
+        alignment={isMobile ? "place-items-center" : "place-items-start"}
+      />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         How much time do you spend on body care daily:
       </div>

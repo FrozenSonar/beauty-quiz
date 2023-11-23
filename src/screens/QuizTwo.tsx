@@ -4,7 +4,6 @@ import CheckboxCard, {
 } from "~/components/CheckboxCard";
 import Header from "~/components/Header";
 import { useState } from "react";
-import { Checkbox } from "@mantine/core";
 
 export default function QuizTwo() {
   const [value, setValue] = useState<string[]>([]);
@@ -39,21 +38,30 @@ export default function QuizTwo() {
     },
   ];
   const disabled = !value.length;
+
+  const handleChecked = (valueParam: string) => {
+    if (value.includes(valueParam)) {
+      const removeValue = value.filter((v) => v !== valueParam);
+      setValue(removeValue);
+    } else {
+      setValue([...value, valueParam]);
+    }
+  };
+
   return (
     <div>
       <Header />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         What hydrating ingredients are you interested in?
       </div>
-      <Checkbox.Group value={value} onChange={setValue}>
-        {checkboxList.map((option, i) => (
-          <CheckboxCard
-            key={i}
-            isSelected={value.includes(i.toString())}
-            {...option}
-          />
-        ))}
-      </Checkbox.Group>
+      {checkboxList.map((option, i) => (
+        <CheckboxCard
+          {...option}
+          key={i}
+          checked={value.includes(i.toString())}
+          setChecked={() => handleChecked(i.toString())}
+        />
+      ))}
       <ButtomBottons
         continueButtonProps={{ disabled }}
         xButtonProps={{ text: "Unsure what my skin needs" }}

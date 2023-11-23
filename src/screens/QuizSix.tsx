@@ -4,7 +4,6 @@ import CheckboxCard, {
 } from "~/components/CheckboxCard";
 import Header from "~/components/Header";
 import { useState } from "react";
-import { Checkbox } from "@mantine/core";
 import ThanksForSharing from "~/components/ThanksForSharing";
 import useScreen from "~/hooks/isMobile";
 
@@ -36,6 +35,14 @@ export default function QuizSix() {
 
   const disabled = !value.length;
 
+  const handleChecked = (valueParam: string) => {
+    if (value.includes(valueParam)) {
+      const removeValue = value.filter((v) => v !== valueParam);
+      setValue(removeValue);
+    } else {
+      setValue([...value, valueParam]);
+    }
+  };
   return (
     <div className={!isMobile ? "w-[40rem]" : ""}>
       <Header />
@@ -43,15 +50,16 @@ export default function QuizSix() {
         Have you experienced any of these issues in your previous skincare
         attempts?
       </div>
-      <Checkbox.Group value={value} onChange={setValue}>
-        {checkboxList.map((option, i) => (
-          <CheckboxCard
-            key={i}
-            isSelected={value.includes(i.toString())}
-            {...option}
-          />
-        ))}
-      </Checkbox.Group>
+
+      {checkboxList.map((option, i) => (
+        <CheckboxCard
+          {...option}
+          key={i}
+          checked={value.includes(i.toString())}
+          setChecked={() => handleChecked(i.toString())}
+        />
+      ))}
+
       <ButtomBottons
         continueButtonProps={{ disabled }}
         xButtonProps={{ text: "None of the Above" }}

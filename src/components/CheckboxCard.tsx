@@ -3,14 +3,14 @@ import { Button, Checkbox, type CheckboxProps } from "@mantine/core";
 import Image from "next/image";
 import { useHover } from "@mantine/hooks";
 import useScreen from "~/hooks/isMobile";
-// import { type CheckboxProps } from "@radix-ui/react-checkbox";
-// import * as Checkbox from "@radix-ui/react-checkbox";
-import classes from "../styles/checkbox.module.css";
+
 export interface CheckboxCardProps extends CheckboxProps {
   text: string;
   subtext?: string;
   endImage?: string;
   isSelected?: boolean;
+  checked?: boolean;
+  setChecked?: () => void;
 }
 
 export default function CheckboxCard({
@@ -18,6 +18,8 @@ export default function CheckboxCard({
   subtext,
   endImage,
   isSelected,
+  checked,
+  setChecked,
   ...props
 }: CheckboxCardProps) {
   const { hovered, ref } = useHover();
@@ -37,63 +39,66 @@ export default function CheckboxCard({
   );
 
   return (
-    <form>
-      <div
-        className={`mb-2 overflow-hidden ${
-          isSelected && "border-2 border-beauty-yellow"
-        }`}
-        ref={ref}
-      >
-        <Button
-          variant="filled"
-          radius="xs"
-          fullWidth
-          size="2xl"
-          bg={hovered ? "#394A62" : "#556479"}
-          justify="space-between"
-          leftSection={
-            <div className="flex flex-row space-x-4 pl-6">
-              <Checkbox
-                {...props}
-                tabIndex={-1}
-                size={"1.75rem"}
-                radius={0}
-                icon={CheckboxIcon}
-              />
+    <div
+      className={`mb-2 overflow-hidden ${
+        checked && "border-2 border-beauty-yellow"
+      }`}
+      ref={ref}
+    >
+      <Button
+        variant="filled"
+        radius="xs"
+        fullWidth
+        size="2xl"
+        onClick={() => setChecked?.()}
+        bg={hovered ? "#394A62" : "#556479"}
+        // styles={{ root: { cursor: "default" } }}
+        justify="space-between"
+        leftSection={
+          <div className="flex flex-row space-x-4 pl-6">
+            <Checkbox
+              {...props}
+              tabIndex={-1}
+              checked={checked}
+              onChange={() => setChecked?.()}
+              size={"1.75rem"}
+              radius={0}
+              styles={{ input: { cursor: "pointer" } }}
+              icon={CheckboxIcon}
+            />
 
-              <div className="flex flex-col text-start">
-                <div
-                  className={`mb-2 font-semibold ${
-                    isMobile ? "text-[0.95rem]" : "text-lg"
-                  }`}
-                >
-                  {text}
+            <div className="flex flex-col text-start">
+              <div
+                className={`mb-2 font-semibold ${
+                  isMobile ? "text-[0.95rem]" : "text-lg"
+                }`}
+              >
+                {text}
+              </div>
+              {subtext && (
+                <div className="text-xs font-light tracking-wide">
+                  {subtext}
                 </div>
-                {subtext && (
-                  <div className="text-xs font-light tracking-wide">
-                    {subtext}
-                  </div>
-                )}
-              </div>
+              )}
             </div>
-          }
-          rightSection={
-            endImage ? (
-              <div className="w-36">
-                <Image
-                  src={`/assets/${endImage}`}
-                  alt="endImage"
-                  objectFit="contain"
-                  width={250}
-                  height={250}
-                />
-              </div>
-            ) : (
-              <span />
-            )
-          }
-        ></Button>
-      </div>
-    </form>
+          </div>
+        }
+        rightSection={
+          endImage ? (
+            <div className="w-36">
+              <Image
+                src={`/assets/${endImage}`}
+                alt="endImage"
+                objectFit="contain"
+                width={250}
+                height={250}
+              />
+            </div>
+          ) : (
+            <span />
+          )
+        }
+      ></Button>
+    </div>
   );
 }

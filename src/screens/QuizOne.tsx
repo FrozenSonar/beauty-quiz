@@ -1,4 +1,3 @@
-import { Checkbox } from "@mantine/core";
 import { useState } from "react";
 import ButtomBottons from "~/components/ButtomBottons";
 import CheckboxCard, {
@@ -34,21 +33,30 @@ export default function QuizOne() {
 
   const disabled = !value.length;
 
+  const handleChecked = (valueParam: string) => {
+    if (value.includes(valueParam)) {
+      const removeValue = value.filter((v) => v !== valueParam);
+      setValue(removeValue);
+    } else {
+      setValue([...value, valueParam]);
+    }
+  };
+
   return (
     <div>
       <Header />
       <div className="mb-8 text-2xl font-semibold tracking-wide">
         Select problem areas
       </div>
-      <Checkbox.Group value={value} onChange={setValue}>
-        {checkboxList.map((option, i) => (
-          <CheckboxCard
-            {...option}
-            key={i}
-            isSelected={value.includes(i.toString())}
-          />
-        ))}
-      </Checkbox.Group>
+      {checkboxList.map((option, i) => (
+        <CheckboxCard
+          {...option}
+          key={i}
+          checked={value.includes(i.toString())}
+          setChecked={() => handleChecked(i.toString())}
+        />
+      ))}
+
       <ButtomBottons continueButtonProps={{ disabled }} />
     </div>
   );

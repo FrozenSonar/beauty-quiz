@@ -3,8 +3,9 @@ import { useQuiz } from "~/providers/QuizProvider";
 
 export default function CustomProgressBar() {
   const { quizList, currentQuiz, setCurrentQuiz } = useQuiz();
-  const current = currentQuiz + 1;
-  const max = quizList.length;
+
+  const current = quizList[currentQuiz]?.quizId ?? 1;
+  const max = quizList.filter((quiz) => quiz.quizId).length;
 
   const value = (current / max) * 100;
 

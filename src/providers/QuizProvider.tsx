@@ -14,10 +14,14 @@ import QuizSix from "~/screens/QuizSix";
 import QuizThree from "~/screens/QuizThree";
 import QuizTwo from "~/screens/QuizTwo";
 
+interface QuizListMap {
+  quizId?: number;
+  quiz: JSX.Element;
+}
 interface QuizContextProps {
   currentQuiz: number;
   setCurrentQuiz: (quiz: number) => void;
-  quizList: JSX.Element[];
+  quizList: QuizListMap[];
 }
 
 const QuizContext = createContext<QuizContextProps>({
@@ -31,14 +35,14 @@ export default function QuizProvider({ children }: PropsWithChildren) {
   const [currentQuiz, setCurrentQuiz] = useState<number>(0);
 
   const quizList = [
-    <Intro />,
-    <QuizOne />,
-    <QuizTwo />,
-    <QuizThree />,
-    <Halfway />,
-    <QuizFour />,
-    <QuizFive />,
-    <QuizSix />,
+    { quiz: <Intro /> },
+    { quizId: 1, quiz: <QuizOne /> },
+    { quizId: 2, quiz: <QuizTwo /> },
+    { quizId: 3, quiz: <QuizThree /> },
+    { quiz: <Halfway /> },
+    { quizId: 4, quiz: <QuizFour /> },
+    { quizId: 5, quiz: <QuizFive /> },
+    { quizId: 6, quiz: <QuizSix /> },
   ];
   return (
     <QuizContext.Provider value={{ currentQuiz, setCurrentQuiz, quizList }}>
